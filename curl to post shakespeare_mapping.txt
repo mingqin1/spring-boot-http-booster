@@ -8,3 +8,6 @@ curl -XPUT https://search-smart-search-bqq3mw3dxiheoiybcf2cvl6rqi.us-east-1.es.a
 
 
 curl -XPOST https://search-smart-search-bqq3mw3dxiheoiybcf2cvl6rqi.us-east-1.es.amazonaws.com/shakespeare/_bulk --data-binary @shakes1.json -H 'Content-Type: application/json'
+
+
+curl -XGET https://search-smart-search-bqq3mw3dxiheoiybcf2cvl6rqi.us-east-1.es.amazonaws.com/shakespeare/_search?pretty -d '{"query" : {"match_phrase" : { "text_entry" : "to be or not to be" } }  }'
