@@ -1,14 +1,10 @@
-curl -XPUT http://localhost:9200/shakespeare -d '
-{
- "mappings" : {
-  "_default_" : {
-   "properties" : {
-    "speaker" : {"type": "string", "index" : "not_analyzed" },
-    "play_name" : {"type": "string", "index" : "not_analyzed" },
-    "line_id" : { "type" : "integer" },
-    "speech_number" : { "type" : "integer" }
-   }
-  }
- }
-}
-';
+curl -XPUT https://search-smart-search-bqq3mw3dxiheoiybcf2cvl6rqi.us-east-1.es.amazonaws.com/movies/movie/1 -d '{"director": "Burton, Tim", "genre": ["Comedy","Sci-Fi"], "year": 1996, "actor": ["Jack Nicholson","Pierce Brosnan","Sarah Jessica Parker"], "title": "Mars Attacks!"}' -H 'Content-Type: application/json'
+
+
+curl -XGET https://search-smart-search-bqq3mw3dxiheoiybcf2cvl6rqi.us-east-1.es.amazonaws.com/movies/movie/_search?pretty
+
+
+curl -XPUT https://search-smart-search-bqq3mw3dxiheoiybcf2cvl6rqi.us-east-1.es.amazonaws.com/shakespeare -d '{"mappings" : {"_default_" : {"properties" : { "speaker" : {"type": "string", "index" : "not_analyzed" },  "play_name" : {"type": "string", "index" : "not_analyzed" }, "line_id" : { "type" : "integer" },  "speech_number" : { "type" : "integer" }} } } }'
+
+
+curl -XPOST https://search-smart-search-bqq3mw3dxiheoiybcf2cvl6rqi.us-east-1.es.amazonaws.com/shakespeare/_bulk --data-binary @shakes1.json -H 'Content-Type: application/json'
